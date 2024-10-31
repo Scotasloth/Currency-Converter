@@ -32,3 +32,20 @@ class Program
         console.WriteLine("Error " + e.Message)
     }
 }
+
+public static async Task<decimal> GetExchangeRate(string src, string targ)
+{
+    using(var client = new HttpClient())
+    {
+        string apiKey = "";
+        string url =  "";
+
+        var reply = await client.GetStringAsync(url);
+        var currData = JObject.Parse(response);
+
+        if (data ["rates"][targ] == null)
+            throw new Exception("Invalid currency");
+
+        return (decimal)data["rates"][targ];
+    } 
+}
