@@ -18,4 +18,17 @@ class Program
         Console.WriteLine("What do you want to convert to?");
         string newCurr = Console.ReadLine().ToUpper()
     }
+
+
+    try
+    {
+        decimal exchangeRate = await GetExchangeRate(homeCurr, newCurr);
+        decimal newVal = amount * exchangeRate;
+
+        console.WriteLine("{amount} {homeCurr} is worth {newVal} {newCurr}");
+    }
+    catch (Exeption e)
+    {
+        console.WriteLine("Error " + e.Message)
+    }
 }
